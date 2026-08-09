@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Chapter 1 Fitness - Onam Survey</title>
+<title>C1F - Onam Survey</title>
 
 <style>
 
@@ -223,8 +223,9 @@ button{
   <div class="wrap">
 
     <div class="logo">
+  <div class="logo" id="adminLogo">
   <div class="chapter">Chapter<span>.</span>1</div>
-  <div class="fitness">FITNESS</div>
+  <div class="fitness">Fitness</div>
 </div>
 
     <div class="card">
@@ -329,7 +330,7 @@ button{
 
     <button id="nextBtn" style="margin-top:24px">READY FOR NEXT MEMBER</button>
 
-    <button class="secondary" id="resultsBtn">TEAM Chapter.1 Fitness</button>
+    
 
   </div>
 
@@ -484,7 +485,26 @@ document.getElementById('resultsBtn').onclick=function(){
 };
 
 document.getElementById('closeSummary').onclick=function(){show('thankScreen')};
+// Hidden admin access from Page 1
+let pressTimer;
+const adminLogo = document.getElementById('adminLogo');
 
+adminLogo.addEventListener('touchstart', () => {
+  pressTimer = setTimeout(() => {
+    const pin = prompt('Enter Admin PIN');
+    if(pin === '2026'){
+      document.getElementById('resultsBtn').click();
+    }
+  }, 3000); // 3 seconds
+});
+
+adminLogo.addEventListener('touchend', () => {
+  clearTimeout(pressTimer);
+});
+
+adminLogo.addEventListener('touchcancel', () => {
+  clearTimeout(pressTimer);
+});
 </script>
 
 </body>
